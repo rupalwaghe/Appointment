@@ -1,0 +1,51 @@
+<template>
+    <lightning-layout-item>
+    <lightning-card title=" Appointment From ">
+        <div class="slds-grid slds-wrap">
+            <!-- Column 1 -->
+            <div class="slds-col slds-size_1-of-2">
+        <lightning-record-edit-form
+        object-api-name={objectapiname}>
+        <lightning-input-field field-name={fieldname} required></lightning-input-field>
+    </lightning-record-edit-form>
+</div> 
+    
+    
+        <div class="slds-col slds-size_1-of-2">
+            
+        <lightning-input type="text" label="Subject" value={subject} onchange={handleSubjectChange} required></lightning-input>
+    </div>
+    </div>
+    <div class="slds-grid">
+        <!-- First Field (Full Width) -->
+        <div class="slds-col slds-size_1-of-2">
+            
+            Appointment Date and Time
+    <lightning-input type="date" label="Appointment Date" value={appointmentDate} onchange={handleDateChange} required></lightning-input>
+        
+       
+    <lightning-input type="time" label="Appointment Time" value={appointmentTime} onchange={handleTimeChange} required></lightning-input>
+</div>
+
+<div class="slds-col slds-size_1-of-2">
+    <div>
+    <lightning-input type="textarea" label="Description" value={description} onchange={handleDescriptionChange} required></lightning-input>
+    
+</div>
+</div>
+</div>
+       
+       
+    <lightning-button label="Check Availability" class="slds-m-top_small" variant="brand" onclick={checkAvailability}></lightning-button>
+    <template if:true={errorMessage}>
+        <p class="slds-text-color_error">{errorMessage}</p>
+    </template>
+  
+    <div class="slds-align_absolute-center">
+       <lightning-button  label="Book Appointment" class="slds-m-vertical_large"  variant="brand" onclick={handleSubmit}></lightning-button>
+    </div>
+
+    </lightning-card>
+    </lightning-layout-item>
+
+</template>
